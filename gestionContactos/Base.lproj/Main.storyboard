@@ -209,6 +209,12 @@
                                     <constraint firstAttribute="width" secondItem="9bl-Hv-3lU" secondAttribute="height" multiplier="1.1:2" id="nFz-w2-ckA"/>
                                 </constraints>
                             </stackView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0op-8m-vna">
+                                <rect key="frame" x="235" y="-23" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="hNG-FV-lUN"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="dyU-zD-L3k"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>

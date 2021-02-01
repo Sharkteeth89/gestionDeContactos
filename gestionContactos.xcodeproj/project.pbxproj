@@ -13,9 +13,11 @@
 		7FC2695B25C42E04003E4648 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC2695925C42E04003E4648 /* Main.storyboard */; };
 		7FC2695D25C42E05003E4648 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC2695C25C42E05003E4648 /* Assets.xcassets */; };
 		7FC2696025C42E05003E4648 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC2695E25C42E05003E4648 /* LaunchScreen.storyboard */; };
+		C89D93699460E082D562B137 /* Pods_gestionContactos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2158E5044B86A344229A98B /* Pods_gestionContactos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2029204FA7F268903C92DFD0 /* Pods-gestionContactos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gestionContactos.debug.xcconfig"; path = "Target Support Files/Pods-gestionContactos/Pods-gestionContactos.debug.xcconfig"; sourceTree = "<group>"; };
 		7FC2695025C42E04003E4648 /* gestionContactos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gestionContactos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC2695325C42E04003E4648 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FC2695525C42E04003E4648 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		7FC2695C25C42E05003E4648 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FC2695F25C42E05003E4648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FC2696125C42E05003E4648 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B20B9F1C6BE8AEDA86320C93 /* Pods-gestionContactos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gestionContactos.release.xcconfig"; path = "Target Support Files/Pods-gestionContactos/Pods-gestionContactos.release.xcconfig"; sourceTree = "<group>"; };
+		C2158E5044B86A344229A98B /* Pods_gestionContactos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gestionContactos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C89D93699460E082D562B137 /* Pods_gestionContactos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A47CE6A5AE3DA59B5DE1474 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2158E5044B86A344229A98B /* Pods_gestionContactos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C55E26584E86D0CF09B9F46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2029204FA7F268903C92DFD0 /* Pods-gestionContactos.debug.xcconfig */,
+				B20B9F1C6BE8AEDA86320C93 /* Pods-gestionContactos.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7FC2694725C42E04003E4648 = {
 			isa = PBXGroup;
 			children = (
 				7FC2695225C42E04003E4648 /* gestionContactos */,
 				7FC2695125C42E04003E4648 /* Products */,
+				0C55E26584E86D0CF09B9F46 /* Pods */,
+				0A47CE6A5AE3DA59B5DE1474 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FC2696425C42E05003E4648 /* Build configuration list for PBXNativeTarget "gestionContactos" */;
 			buildPhases = (
+				8728E21D4418D332343E4C6D /* [CP] Check Pods Manifest.lock */,
 				7FC2694C25C42E04003E4648 /* Sources */,
 				7FC2694D25C42E04003E4648 /* Frameworks */,
 				7FC2694E25C42E04003E4648 /* Resources */,
+				97F74EF2E44E16183AE567E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8728E21D4418D332343E4C6D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gestionContactos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97F74EF2E44E16183AE567E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gestionContactos/Pods-gestionContactos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gestionContactos/Pods-gestionContactos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gestionContactos/Pods-gestionContactos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7FC2694C25C42E04003E4648 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		7FC2696525C42E05003E4648 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2029204FA7F268903C92DFD0 /* Pods-gestionContactos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +369,7 @@
 		};
 		7FC2696625C42E05003E4648 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B20B9F1C6BE8AEDA86320C93 /* Pods-gestionContactos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
