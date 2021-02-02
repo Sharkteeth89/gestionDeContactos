@@ -11,11 +11,11 @@ class Requests{
     
     func getUsers() -> DataRequest {      
         
-        return AF.request(Endpoints.shared.url+Endpoints.User.getUsers, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor:nil)
+        return AF.request(Endpoints.shared.url_clase+Endpoints.User.getUsersMac, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor:nil)
         
     }
-    func registerUser(user:[String:String]) {
-        AF.request(Endpoints.shared.url+Endpoints.User.register, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: nil, interceptor: nil).response{
+    func registerUser(user:User) {
+        AF.request(Endpoints.shared.url_clase+Endpoints.User.register, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: nil, interceptor: nil).response{
             response in debugPrint(response)
         }
     }
@@ -29,9 +29,6 @@ class Requests{
     }
     
     func login(user:[String:String])  -> DataRequest{
-        return AF.request(Endpoints.shared.url+Endpoints.User.login, method: .post, parameters:user , encoder: JSONParameterEncoder.default).response { response in
-            debugPrint(response)
-        
-        }
+        return AF.request(Endpoints.shared.url_clase+Endpoints.User.login, method: .post, parameters:user , encoder: JSONParameterEncoder.default)
     }
 }

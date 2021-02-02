@@ -12,39 +12,29 @@ import UIKit
 class User : Encodable, Decodable{
     
      
-     private var _name:String
-    /*
-     private var _username:String
-     private var _email:String
-     private var _surname:String
-     private var _dateOfBirth:String
-     private var _profilePic:String?
-     private var _password:String
- */
+      var _name:String
+      var _email:String
+      var _surname:String
+      var _profilePic:String
+      var _username:String
+    var _password:String?
     
     enum CodingKeys:String, CodingKey {
-        case _name = "user"
-        /*
-         case _username = "username"
-        case _profilePic = "profile_pic"
+        case _name = "name"
+        case _username = "username"
         case _email = "email"
         case _surname = "surname"
+        case _profilePic = "profile_pic"
         case _password = "password"
-        case _dateOfBirth = "dateOfBirth"
-         */
-    }
+        }
     
-    init(name:String /*, email:String, password:String, dateOfBirth:String*/){
+    init(name:String, email:String, profilePic:String, username:String, surname:String, password:String){
         
         self._name = name
-        /*
         self._username = username
         self._email = email
-        
-        self._surname = "-"
-        self._profilePic = "-"
+        self._surname = surname
+        self._profilePic = profilePic
         self._password = password
-        self._dateOfBirth = dateOfBirth
-         */
     }
 }

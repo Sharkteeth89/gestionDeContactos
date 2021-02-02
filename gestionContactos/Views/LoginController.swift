@@ -2,12 +2,27 @@ import UIKit
 
 class LoginController: UIViewController {
 
+    var token = ""
+    @IBOutlet weak var emailTV: UITextField!
+    @IBOutlet weak var passwordTV: UITextField!
+    @IBAction func login(_ sender: UIButton) {
+        if !emailTV.text!.isEmpty && !passwordTV.text!.isEmpty{
+            let parameters = [
+                "username":emailTV.text!,
+                "password":passwordTV.text!
+            ]
+            var request = Requests.shared.login(user: parameters)
+            
+            request.responseJSON { (response) in
+                 print(response.value!)
+            }
+            //print(token)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print(Requests.shared.getUsers())
-        var username = "Jose2"
-        let array = ["user": username,"pass":"123"]
+        
         
         /*
         Requests.shared.getUsers().responseJSON{

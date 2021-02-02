@@ -66,6 +66,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mKr-f5-mKK"/>
                                             <segue destination="riU-Xc-Bts" kind="show" id="YVr-n8-B2j"/>
                                         </connections>
                                     </button>
@@ -105,6 +106,10 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="3nN-3H-C4x"/>
+                    <connections>
+                        <outlet property="emailTV" destination="YEe-Ib-S4j" id="rH6-Gm-DDl"/>
+                        <outlet property="passwordTV" destination="0Pr-dN-YuY" id="he6-F1-hGO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xtf-5L-vii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="903"/>
+            <point key="canvasLocation" x="986" y="904"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mp3-90-VQO">
@@ -263,6 +268,9 @@
                                                 <exclude reference="uSa-5H-YQd"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="createUser:" destination="TCg-ff-gaB" eventType="touchUpInside" id="0TZ-92-ZEC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

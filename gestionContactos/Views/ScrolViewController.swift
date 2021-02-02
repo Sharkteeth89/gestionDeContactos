@@ -11,7 +11,7 @@ import Alamofire
 
 class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    var users:NSArray = []
+    var users:[User] = []
     
    
     @IBOutlet var tableView: UITableView!
@@ -24,11 +24,30 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
         getUsers()
     }
     func getUsers(){
+        
+            let request = Requests.shared.getUsers()
+        
+            request.response{ (responseData) in
+                
+            guard let data = responseData.data else {return}
+            
+            do{
+                
+                self.users = try JSONDecoder().decode([User].self, from: data)
+                self.tableView.reloadData()
+            }catch{
+                print("Error decoding == \(error)")
+            }
+        }
+ 
+        /*
        Requests.shared.getUsers().responseJSON{
         response in self.users = (response.value! as! NSArray)
         print(self.users)
         self.tableView.reloadData()
-        }
+        self.tableView.backgroundView?.backgroundColor = UIColor.secondarySystemBackground
+        }*/
+ 
     }
     
     // Devuelve el número de elemtos del listado
@@ -39,7 +58,7 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
     // Devuelve la celda de la posición correspondiente
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_ID") as! UserRow
-        cell.nameLabel.text = users[indexPath.row] as? String
+        cell.nameLabel.text = users[indexPath.row]._name
         //cell.profilePicIV.image = users[indexPath.row].profilePic
         return cell
     }
