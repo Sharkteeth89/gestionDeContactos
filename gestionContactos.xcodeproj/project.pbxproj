@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,13 @@
 		7FC2695D25C42E05003E4648 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC2695C25C42E05003E4648 /* Assets.xcassets */; };
 		7FC2696025C42E05003E4648 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC2695E25C42E05003E4648 /* LaunchScreen.storyboard */; };
 		C89D93699460E082D562B137 /* Pods_gestionContactos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2158E5044B86A344229A98B /* Pods_gestionContactos.framework */; };
+		F882C99A25C884AD005922F5 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C99925C884AD005922F5 /* Requests.swift */; };
+		F882C99C25C884F0005922F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C99B25C884F0005922F5 /* User.swift */; };
+		F882C99E25C886B6005922F5 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C99D25C886B6005922F5 /* Endpoints.swift */; };
+		F882C9A025C88B8A005922F5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C99F25C88B8A005922F5 /* LoginController.swift */; };
+		F882C9A625C88F68005922F5 /* SignController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C9A525C88F68005922F5 /* SignController.swift */; };
+		F882C9A825C8BA49005922F5 /* ScrolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C9A725C8BA49005922F5 /* ScrolViewController.swift */; };
+		F882C9AA25C8C19A005922F5 /* UserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882C9A925C8C19A005922F5 /* UserRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +35,13 @@
 		7FC2696125C42E05003E4648 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B20B9F1C6BE8AEDA86320C93 /* Pods-gestionContactos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gestionContactos.release.xcconfig"; path = "Target Support Files/Pods-gestionContactos/Pods-gestionContactos.release.xcconfig"; sourceTree = "<group>"; };
 		C2158E5044B86A344229A98B /* Pods_gestionContactos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gestionContactos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F882C99925C884AD005922F5 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		F882C99B25C884F0005922F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F882C99D25C886B6005922F5 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		F882C99F25C88B8A005922F5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F882C9A525C88F68005922F5 /* SignController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignController.swift; sourceTree = "<group>"; };
+		F882C9A725C8BA49005922F5 /* ScrolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrolViewController.swift; sourceTree = "<group>"; };
+		F882C9A925C8C19A005922F5 /* UserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserRow.swift; path = gestionContactos/Views/UserRow.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +70,6 @@
 				2029204FA7F268903C92DFD0 /* Pods-gestionContactos.debug.xcconfig */,
 				B20B9F1C6BE8AEDA86320C93 /* Pods-gestionContactos.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +94,54 @@
 		7FC2695225C42E04003E4648 /* gestionContactos */ = {
 			isa = PBXGroup;
 			children = (
+				F882C9A425C88C2B005922F5 /* Connectivity */,
+				F882C9A325C88C19005922F5 /* Models */,
+				F882C9A225C88BEC005922F5 /* Views */,
+				F882C9A125C88BCB005922F5 /* Controllers */,
 				7FC2695325C42E04003E4648 /* AppDelegate.swift */,
 				7FC2695525C42E04003E4648 /* SceneDelegate.swift */,
-				7FC2695725C42E04003E4648 /* ViewController.swift */,
 				7FC2695925C42E04003E4648 /* Main.storyboard */,
 				7FC2695C25C42E05003E4648 /* Assets.xcassets */,
 				7FC2695E25C42E05003E4648 /* LaunchScreen.storyboard */,
 				7FC2696125C42E05003E4648 /* Info.plist */,
 			);
 			path = gestionContactos;
+			sourceTree = "<group>";
+		};
+		F882C9A125C88BCB005922F5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F882C9A225C88BEC005922F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FC2695725C42E04003E4648 /* ViewController.swift */,
+				F882C99F25C88B8A005922F5 /* LoginController.swift */,
+				F882C9A525C88F68005922F5 /* SignController.swift */,
+				F882C9A725C8BA49005922F5 /* ScrolViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F882C9A325C88C19005922F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F882C9A925C8C19A005922F5 /* UserRow.swift */,
+				F882C99B25C884F0005922F5 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F882C9A425C88C2B005922F5 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				F882C99925C884AD005922F5 /* Requests.swift */,
+				F882C99D25C886B6005922F5 /* Endpoints.swift */,
+			);
+			path = Connectivity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +260,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC2695825C42E04003E4648 /* ViewController.swift in Sources */,
+				F882C99A25C884AD005922F5 /* Requests.swift in Sources */,
+				F882C9A825C8BA49005922F5 /* ScrolViewController.swift in Sources */,
+				F882C9AA25C8C19A005922F5 /* UserRow.swift in Sources */,
 				7FC2695425C42E04003E4648 /* AppDelegate.swift in Sources */,
+				F882C99C25C884F0005922F5 /* User.swift in Sources */,
+				F882C9A625C88F68005922F5 /* SignController.swift in Sources */,
+				F882C99E25C886B6005922F5 /* Endpoints.swift in Sources */,
 				7FC2695625C42E04003E4648 /* SceneDelegate.swift in Sources */,
+				F882C9A025C88B8A005922F5 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
