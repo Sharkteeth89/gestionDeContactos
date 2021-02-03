@@ -35,6 +35,7 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 self.users = try JSONDecoder().decode([User].self, from: data)
                 self.tableView.reloadData()
+                self.tableView.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
             }catch{
                 print("Error decoding == \(error)")
             }
@@ -61,6 +62,14 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.nameLabel.text = users[indexPath.row]._name
         //cell.profilePicIV.image = users[indexPath.row].profilePic
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selecteditem = users[indexPath.row]
+        performSegue(withIdentifier: "details", sender: selecteditem)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! DetailViewController
+        destination.user = sender as? User
     }
 
 }

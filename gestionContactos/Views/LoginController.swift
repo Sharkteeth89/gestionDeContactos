@@ -11,17 +11,18 @@ class LoginController: UIViewController {
                 "username":emailTV.text!,
                 "password":passwordTV.text!
             ]
-            var request = Requests.shared.login(user: parameters)
+            
+            let request = Requests.shared.login(user: parameters)
             
             request.responseJSON { (response) in
-                 print(response.value!)
+                 print(response.value)
             }
-            //print(token)
+            
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         
         
         /*

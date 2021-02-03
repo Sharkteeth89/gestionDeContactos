@@ -15,9 +15,9 @@ class User : Encodable, Decodable{
       var _name:String
       var _email:String
       var _surname:String
-      var _profilePic:String
+      var _profilePic:String?
       var _username:String
-    var _password:String?
+      var _password:String?
     
     enum CodingKeys:String, CodingKey {
         case _name = "name"
