@@ -169,7 +169,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="maI-E0-ZMP" firstAttribute="bottom" secondItem="ERc-V8-eLg" secondAttribute="bottom" id="CQu-FC-W0w"/>
                             <constraint firstItem="ERc-V8-eLg" firstAttribute="top" secondItem="maI-E0-ZMP" secondAttribute="top" id="Hpc-9z-kGc"/>
@@ -179,6 +179,7 @@
                         <viewLayoutGuide key="safeArea" id="maI-E0-ZMP"/>
                     </view>
                     <navigationItem key="navigationItem" id="ADQ-9G-JYs"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ERc-V8-eLg" id="eTj-SX-CJS"/>
                     </connections>

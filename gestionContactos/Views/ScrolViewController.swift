@@ -21,6 +21,8 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+        
         getUsers()
     }
     func getUsers(){
@@ -40,16 +42,8 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print("Error decoding == \(error)")
             }
         }
- 
-        /*
-       Requests.shared.getUsers().responseJSON{
-        response in self.users = (response.value! as! NSArray)
-        print(self.users)
-        self.tableView.reloadData()
-        self.tableView.backgroundView?.backgroundColor = UIColor.secondarySystemBackground
-        }*/
- 
     }
+    
     
     // Devuelve el número de elemtos del listado
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,6 +59,7 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selecteditem = users[indexPath.row]
+        
         performSegue(withIdentifier: "details", sender: selecteditem)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

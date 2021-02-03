@@ -4,7 +4,8 @@ import Alamofire
 class Requests{
     
     static let shared = Requests()
-    
+    let headers : HTTPHeaders = ["Content-Type":"application/json",
+                                 "Authorization":"Basic \(UserDefaults.standard.string(forKey: "apius79dd_token"))"]
     private init() {
         
     }
@@ -14,21 +15,21 @@ class Requests{
         return AF.request(Endpoints.shared.url_server+Endpoints.User.getUsers, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor:nil)
         
     }
-    func registerUser(user:User) {
-        AF.request(Endpoints.shared.url_server+Endpoints.User.register, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: nil, interceptor: nil).response{
-            response in debugPrint(response)
-        }
+    func registerUser(user:User) -> DataRequest {
+        return AF.request(Endpoints.shared.url_server+Endpoints.User.register, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: nil, interceptor: nil)
     }
     
     func restorePassword(parameters:[String:String]) {
 
         AF.request(Endpoints.shared.url+Endpoints.User.restorePassword, method: .post, parameters:parameters , encoder: JSONParameterEncoder.default).response { response in
-            debugPrint(response)
-        
+            debugPrint(response)        
         }
     }
-    
     func login(user:[String:String])  -> DataRequest{
         return AF.request(Endpoints.shared.url_server+Endpoints.User.login, method: .post, parameters:user , encoder: JSONParameterEncoder.default)
+    }
+    
+    func deleteUser(api_token:[String:String]) -> DataRequest {
+        return AF.request(Endpoints.shared.url_server + Endpoints.User.delete, method: .post, parameters: api_token, encoder: JSONParameterEncoder.default, headers: nil, interceptor: nil)
     }
 }

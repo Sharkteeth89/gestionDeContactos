@@ -18,5 +18,6 @@ class Endpoints {
         static let login:String = "/login"
         static let restorePassword:String = "/generateNewPassword"
         static let updatePassword:String = "/updatePassword"
+        static let delete:String = "/remove"
     }
 }

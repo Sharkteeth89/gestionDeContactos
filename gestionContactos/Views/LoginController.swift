@@ -2,7 +2,7 @@ import UIKit
 
 class LoginController: UIViewController {
 
-    var token = ""
+    var api_token = ""
     @IBOutlet weak var emailTV: UITextField!
     @IBOutlet weak var passwordTV: UITextField!
     @IBAction func login(_ sender: UIButton) {
@@ -15,9 +15,11 @@ class LoginController: UIViewController {
             let request = Requests.shared.login(user: parameters)
             
             request.responseJSON { (response) in
-                 print(response.value)
-            }
-            
+                if(response.response!.statusCode == 200){
+                    UserDefaults.standard.set(response.value! as! String, forKey: "api_token" )
+                    print(UserDefaults.standard.string(forKey: "api_token")!)
+                }
+            }            
         }
     }
     override func viewDidLoad() {

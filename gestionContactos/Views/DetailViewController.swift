@@ -15,6 +15,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Requests.shared.deleteUser(api_token:["api_token": UserDefaults.standard.string(forKey: "api_token")!]).responseJSON { (response) in
+            print(response.response?.description)
+        }
         if(user != nil){
             detailsNameTL.text = user?._name
         }
