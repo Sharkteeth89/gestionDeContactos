@@ -16,11 +16,10 @@ class Requests{
     }
     func registerUser(user:User) -> DataRequest {
         return AF.request(Endpoints.shared.url_server+Endpoints.User.register, method: .post, parameters: user, encoder: JSONParameterEncoder.default, headers: nil, interceptor: nil)
-    }
+    }	
     
     func restorePassword(parameters:[String:String])-> DataRequest {
-
-        return AF.request(Endpoints.shared.url+Endpoints.User.restorePassword, method: .post, parameters:parameters , encoder:          JSONParameterEncoder.default)      
+        return AF.request(Endpoints.shared.url_server+Endpoints.User.restorePassword, method: .post, parameters:parameters , encoder: JSONParameterEncoder.default)
     }
     func login(user:[String:String])  -> DataRequest{
         return AF.request(Endpoints.shared.url_server+Endpoints.User.login, method: .post, parameters:user , encoder: JSONParameterEncoder.default)

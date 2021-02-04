@@ -21,9 +21,11 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        
-        
         getUsers()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     func getUsers(){
         
@@ -44,22 +46,17 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
     }
     
-    
-    // Devuelve el número de elemtos del listado
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
     }
 
-    // Devuelve la celda de la posición correspondiente
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_ID") as! UserRow
         cell.nameLabel.text = users[indexPath.row]._name
-        //cell.profilePicIV.image = users[indexPath.row].profilePic
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selecteditem = users[indexPath.row]
-        
+        let selecteditem = users[indexPath.row]        
         performSegue(withIdentifier: "details", sender: selecteditem)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

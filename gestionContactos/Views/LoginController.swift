@@ -5,6 +5,9 @@ class LoginController: UIViewController {
     var api_token = ""
     @IBOutlet weak var emailTV: UITextField!
     @IBOutlet weak var passwordTV: UITextField!
+    let alert = UIAlertController(title: "Login failed", message: "Try again!", preferredStyle: .alert)
+    
+    
     @IBAction func login(_ sender: UIButton) {
         if !emailTV.text!.isEmpty && !passwordTV.text!.isEmpty{
             let parameters = [
@@ -15,37 +18,31 @@ class LoginController: UIViewController {
             let request = Requests.shared.login(user: parameters)
             
             request.responseJSON { (response) in
-                if(response.response!.statusCode == 200){
-                    UserDefaults.standard.set(response.value! as! String, forKey: "api_token" )
-                    print(UserDefaults.standard.string(forKey: "api_token")!)
-                }
+                if (response.value! as! String) != "No user"{
+                    let body = response.value as! String
+                    let splitted = body.split(separator: " ")
+                    let api_token = splitted[1]
+                    
+                    if(splitted[0] == "OK"){
+                        UserDefaults.standard.set(api_token, forKey: "api_token" )
+                        self.performSegue(withIdentifier: "main", sender: sender)
+                    }else{
+                        self.present(self.alert, animated: true, completion: nil)
+                    }
+                }else{
+                    self.present(self.alert, animated: true, completion: nil)
+                }                
             }            
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        
-        
-        /*
-        Requests.shared.getUsers().responseJSON{
-            response in print(response.value!)
-        }
- */
-        //Requests.shared.registerUser(user: array)
-        //Requests.shared.login(user: array)
-        
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    */
-
 }

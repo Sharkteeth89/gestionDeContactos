@@ -11,6 +11,7 @@ import UIKit
 class ForgotPasswordController: UIViewController {
 
     @IBOutlet weak var emailTF: UITextField!
+    let alert = UIAlertController(title: "Nope dude", message: "Your new password is: ", preferredStyle: .alert)
     
     @IBAction func recoverPassword(_ sender: Any) {
         if !emailTF.text!.isEmpty {
@@ -20,29 +21,21 @@ class ForgotPasswordController: UIViewController {
             let request = Requests.shared.restorePassword(parameters: parameters)
             
             request.responseJSON { (response) in
-                //TODO
+                if (response.value! as! String != "Wrong email"){
+                    let pass = response.value! as! String
+                    self.alert.message = "Your new password is: " + pass
+                    self.alert.addAction(UIAlertAction(title: "OK", style: .cancel){
+                        UIAlertAction in self.navigationController?.popToRootViewController(animated: true)
+                    })                    
+                }else{
+                    self.alert.message = "Wrong email"
+                }
+                self.present(self.alert, animated: true, completion: nil)
             }
-            
-            
         }
-        
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
