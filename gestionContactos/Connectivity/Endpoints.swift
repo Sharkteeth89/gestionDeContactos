@@ -12,12 +12,13 @@ class Endpoints {
     
     //User´s Petitions
     enum User {
-        static let getUsers:String = "/all"
-        static let getUsersJuan:String = "/api/users"
+        
         static let register:String = "/register"
         static let login:String = "/login"
-        static let restorePassword:String = "/generateNewPassword"
+        static let restorePassword:String = "/password/restore"
         static let updatePassword:String = "/updatePassword"
         static let delete:String = "/remove"
+        static let getProfile:String = "/profile/info"
+        static let getUsers:String = "/all"
     }
 }

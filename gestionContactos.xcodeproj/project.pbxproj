@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F85AD6225CC2275009F7E44 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AD6125CC2275009F7E44 /* ProfileController.swift */; };
+		7F85AD6425CC3288009F7E44 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AD6325CC3288009F7E44 /* ForgotPasswordController.swift */; };
 		7FC1975025CAC30600E74390 /* HideKeyb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1974F25CAC30600E74390 /* HideKeyb.swift */; };
 		7FC1975225CADA6200E74390 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1975125CADA6200E74390 /* DetailViewController.swift */; };
 		7FC2695425C42E04003E4648 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC2695325C42E04003E4648 /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		2029204FA7F268903C92DFD0 /* Pods-gestionContactos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gestionContactos.debug.xcconfig"; path = "Target Support Files/Pods-gestionContactos/Pods-gestionContactos.debug.xcconfig"; sourceTree = "<group>"; };
+		7F85AD6125CC2275009F7E44 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		7F85AD6325CC3288009F7E44 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		7FC1974F25CAC30600E74390 /* HideKeyb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HideKeyb.swift; path = gestionContactos/Views/HideKeyb.swift; sourceTree = SOURCE_ROOT; };
 		7FC1975125CADA6200E74390 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7FC2695025C42E04003E4648 /* gestionContactos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gestionContactos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +131,8 @@
 				F882C9A525C88F68005922F5 /* SignController.swift */,
 				F882C9A725C8BA49005922F5 /* ScrolViewController.swift */,
 				7FC1975125CADA6200E74390 /* DetailViewController.swift */,
+				7F85AD6125CC2275009F7E44 /* ProfileController.swift */,
+				7F85AD6325CC3288009F7E44 /* ForgotPasswordController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,8 +274,10 @@
 				7FC2695825C42E04003E4648 /* ViewController.swift in Sources */,
 				7FC1975025CAC30600E74390 /* HideKeyb.swift in Sources */,
 				F882C99A25C884AD005922F5 /* Requests.swift in Sources */,
+				7F85AD6425CC3288009F7E44 /* ForgotPasswordController.swift in Sources */,
 				7FC1975225CADA6200E74390 /* DetailViewController.swift in Sources */,
 				F882C9A825C8BA49005922F5 /* ScrolViewController.swift in Sources */,
+				7F85AD6225CC2275009F7E44 /* ProfileController.swift in Sources */,
 				F882C9AA25C8C19A005922F5 /* UserRow.swift in Sources */,
 				7FC2695425C42E04003E4648 /* AppDelegate.swift in Sources */,
 				F882C99C25C884F0005922F5 /* User.swift in Sources */,

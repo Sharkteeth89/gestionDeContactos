@@ -31,17 +31,17 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
         
             request.response{ (responseData) in
                 
-            guard let data = responseData.data else {return}
+                guard let data = responseData.data else {return}
             
-            do{
+                do{
                 
-                self.users = try JSONDecoder().decode([User].self, from: data)
-                self.tableView.reloadData()
-                self.tableView.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
-            }catch{
-                print("Error decoding == \(error)")
+                    self.users = try JSONDecoder().decode([User].self, from: data)
+                    self.tableView.reloadData()
+                    self.tableView.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
+                }catch{
+                    print("Error decoding == \(error)")
+                }
             }
-        }
     }
     
     
