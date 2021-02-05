@@ -11,27 +11,24 @@ import UIKit
 class ForgotPasswordController: UIViewController {
 
     @IBOutlet weak var emailTF: UITextField!
-    let alert = UIAlertController(title: "Nope dude", message: "Your new password is: ", preferredStyle: .alert)
+    let wrongEmailAlert = UIAlertController(title: "Wrong email", message: "Try again", preferredStyle: .alert)
+    let newPasswordAlert = UIAlertController(title: "This is your new password", message: "Your new password is: ", preferredStyle: .alert)
     
     @IBAction func recoverPassword(_ sender: Any) {
         if checkEmail(textFieldEmail: emailTF) {
             let parameters = [
-                "email" : emailTF.text!
+                Parameters.shared.email : emailTF.text!
             ]
             let request = Requests.shared.restorePassword(parameters: parameters)
             
             request.responseJSON { (response) in
                 if (response.value! as! String != "Wrong email"){
                     let pass = response.value! as! String
-                    self.alert.message = "Your new password is: " + pass
-                    self.alert.addAction(UIAlertAction(title: "OK", style: .cancel){
-                        UIAlertAction in self.navigationController?.popToRootViewController(animated: true)
-                    })                    
+                    self.newPasswordAlert.message = "" + pass
+                    AlertHandler.shared.addActionAlert(alert: self.newPasswordAlert, nc: self.navigationController!,goRoot: true)
                 }else{
-                    self.alert.message = "Wrong email"
-                    self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                }
-                self.present(self.alert, animated: true, completion: nil)
+                    AlertHandler.shared.addActionAlert(alert: self.wrongEmailAlert, nc: self.navigationController!, goRoot: false)
+                }                
             }
         }
     }

@@ -11,8 +11,8 @@ class LoginController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         if checkEmail(textFieldEmail: emailTV) && checkPassword(textFieldPass: passwordTV){
             let parameters = [
-                "username":emailTV.text!,
-                "password":passwordTV.text!
+                Parameters.shared.username : emailTV.text!,
+                Parameters.shared.password : passwordTV.text!
             ]
             
             let request = Requests.shared.login(user: parameters)
@@ -24,13 +24,13 @@ class LoginController: UIViewController {
                     let api_token = splitted[1]
                     
                     if(splitted[0] == "OK"){
-                        UserDefaults.standard.set(api_token, forKey: "api_token" )
+                        UserDefaults.standard.set(api_token, forKey: Parameters.shared.api_token)
                         self.performSegue(withIdentifier: "main", sender: sender)
                     }else{
-                        self.present(self.alert, animated: true, completion: nil)
+                        AlertHandler.shared.addActionAlert(alert: self.alert, nc: self.navigationController!, goRoot: false)
                     }
                 }else{
-                    self.present(self.alert, animated: true, completion: nil)
+                    AlertHandler.shared.addActionAlert(alert: self.alert, nc: self.navigationController!, goRoot: false)
                 }                
             }            
         }
@@ -38,7 +38,6 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
     }
     
     override func viewDidAppear(_ animated: Bool) {

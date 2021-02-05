@@ -21,12 +21,9 @@ class ProfileController: UIViewController {
     @IBOutlet var newPassword: UITextField!
     
     @IBAction func deleteUser(_ sender: Any) {
-        Requests.shared.deleteUser(api_token:["api_token": UserDefaults.standard.string(forKey: "api_token")!]).responseJSON { (response) in
+        Requests.shared.deleteUser(api_token:[Parameters.shared.api_token: UserDefaults.standard.string(forKey: Parameters.shared.api_token)!]).responseJSON { (response) in
             if response.value! as! String == "Deleted"{
-                self.alertDelete.addAction(UIAlertAction(title: "OK", style: .cancel){
-                    UIAlertAction in self.navigationController?.popToRootViewController(animated: true)
-                })
-                self.present(self.alertDelete, animated: true, completion: nil)
+                AlertHandler.shared.addActionAlert(alert: self.alertDelete, nc: self.navigationController!, goRoot: true)
             }
         }
     }
@@ -38,24 +35,20 @@ class ProfileController: UIViewController {
         
         if checkPassword(textFieldPass: oldPassword) && checkPassword(textFieldPass: newPassword) {
             let parameters = [
-                "api_token" : UserDefaults.standard.string(forKey: "api_token")!,
-                "password" : oldPassword.text!,
-                "new_password" : newPassword.text!
+                Parameters.shared.api_token : UserDefaults.standard.string(forKey: Parameters.shared.api_token)!,
+                Parameters.shared.password : oldPassword.text!,
+                Parameters.shared.new_password : newPassword.text!
             ]
             let request = Requests.shared.updatePassword(parameters: parameters)
             request.responseJSON { (response) in
                 if(response.value! as! String == "OK"){
-                    self.alertPasswordChaged.addAction(UIAlertAction(title: "OK", style: .cancel){
-                        UIAlertAction in
-                            self.oldPassword.text! = ""
-                            self.newPassword.text! = ""
-                            self.oldPassword.isHidden = true
-                            self.newPassword.isHidden = true
-                    })
-                    self.present(self.alertPasswordChaged, animated: true, completion: nil)
+                    AlertHandler.shared.addActionAlert(alert: self.alertPasswordChaged, nc: self.navigationController!, goRoot: false)
+                    self.oldPassword.text! = ""
+                    self.newPassword.text! = ""
+                    self.oldPassword.isHidden = true
+                    self.newPassword.isHidden = true
                 }else{
-                    self.alertPasswordFailed.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(self.alertPasswordFailed, animated: true, completion: nil)
+                    AlertHandler.shared.addActionAlert(alert: self.alertPasswordFailed, nc: self.navigationController!, goRoot: false)
                 }
             }
         }
@@ -67,7 +60,7 @@ class ProfileController: UIViewController {
         oldPassword.isHidden = true
         newPassword.isHidden = true
     
-        let request = Requests.shared.getProfileInfo(api_token: ["api_token": UserDefaults.standard.string(forKey: "api_token")!])
+        let request = Requests.shared.getProfileInfo(api_token: [Parameters.shared.api_token: UserDefaults.standard.string(forKey: Parameters.shared.api_token)!])
         
             request.response{ (responseData) in
                 

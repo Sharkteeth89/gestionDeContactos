@@ -6,7 +6,8 @@ class SignController: UIViewController {
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var confirmPasswordTF: UITextField!
-    let alert = UIAlertController(title: "", message: "Log in now!", preferredStyle: .alert)
+    let alertRegistered = UIAlertController(title: "User registered", message: "Log in now!", preferredStyle: .alert)
+    let alertFailed = UIAlertController(title: "Failed", message: "Mail already exists", preferredStyle: .alert)
     
     @IBAction func createUser(_ sender: UIButton) {
         if checkEmail(textFieldEmail: emailTF) && checkPassword(textFieldPass: passwordTF) && checkPassword(textFieldPass: confirmPasswordTF){
@@ -17,15 +18,10 @@ class SignController: UIViewController {
                 let request = Requests.shared.registerUser(user: user)
                 request.responseJSON { response in
                     if(response.value! as! String == "User registered"){
-                        self.alert.message = "User registered"
-                        self.alert.addAction(UIAlertAction(title: "Go to login", style: .cancel){
-                            UIAlertAction in self.navigationController?.popToRootViewController(animated: true)
-                        })
+                        AlertHandler.shared.addActionAlert(alert: self.alertRegistered, nc: self.navigationController!, goRoot: true)
                     }else{
-                        self.alert.message = "Mail already exists"
-                        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                        AlertHandler.shared.addActionAlert(alert: self.alertFailed, nc: self.navigationController!, goRoot: false)
                     }
-                    self.present(self.alert, animated: true, completion: nil)
                 }
             }
         }
