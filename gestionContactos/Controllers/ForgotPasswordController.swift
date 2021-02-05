@@ -11,8 +11,8 @@ import UIKit
 class ForgotPasswordController: UIViewController {
 
     @IBOutlet weak var emailTF: UITextField!
-    let wrongEmailAlert = UIAlertController(title: "Wrong email", message: "Try again", preferredStyle: .alert)
-    let newPasswordAlert = UIAlertController(title: "This is your new password", message: "Your new password is: ", preferredStyle: .alert)
+    let wrongEmailAlert = UIAlertController(title: Errors.shared.wrongEmail, message: Errors.shared.tryAgain, preferredStyle: .alert)
+    let newPasswordAlert = UIAlertController(title: RequestResponses.shared.newPassword, message: "", preferredStyle: .alert)
     
     @IBAction func recoverPassword(_ sender: Any) {
         if checkEmail(textFieldEmail: emailTF) {
@@ -22,9 +22,9 @@ class ForgotPasswordController: UIViewController {
             let request = Requests.shared.restorePassword(parameters: parameters)
             
             request.responseJSON { (response) in
-                if (response.value! as! String != "Wrong email"){
+                if (response.value! as! String != Errors.shared.wrongEmail){
                     let pass = response.value! as! String
-                    self.newPasswordAlert.message = "" + pass
+                    self.newPasswordAlert.message = pass
                     AlertHandler.shared.addActionAlert(alert: self.newPasswordAlert, nc: self.navigationController!,goRoot: true)
                 }else{
                     AlertHandler.shared.addActionAlert(alert: self.wrongEmailAlert, nc: self.navigationController!, goRoot: false)

@@ -34,14 +34,12 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
             request.response{ (responseData) in
                 
                 guard let data = responseData.data else {return}
-            
                 do{
-                
                     self.users = try JSONDecoder().decode([User].self, from: data)
                     self.tableView.reloadData()
                     self.tableView.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
                 }catch{
-                    print("Error decoding == \(error)")
+                    print(Errors.shared.failedRequest)
                 }
             }
     }
@@ -51,13 +49,13 @@ class ScrolViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_ID") as! UserRow
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.shared.cell) as! UserRow
         cell.nameLabel.text = users[indexPath.row]._name
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selecteditem = users[indexPath.row]        
-        performSegue(withIdentifier: "details", sender: selecteditem)
+        performSegue(withIdentifier: Identifiers.shared.details, sender: selecteditem)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! DetailViewController

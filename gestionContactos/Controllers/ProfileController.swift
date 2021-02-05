@@ -11,9 +11,9 @@ import UIKit
 class ProfileController: UIViewController {
     
     var user : User?
-    let alertDelete = UIAlertController(title: "Account Deleted", message: "Thanks for using us!", preferredStyle: .alert)
-    let alertPasswordChaged = UIAlertController(title: "Password changed!", message: "Have a nice day!", preferredStyle: .alert)
-    let alertPasswordFailed = UIAlertController(title: "Wrong current password introduced", message: "Try again!", preferredStyle: .alert)
+    let alertDelete = UIAlertController(title: RequestResponses.shared.accountDeleted, message: RequestResponses.shared.thanks, preferredStyle: .alert)
+    let alertPasswordChaged = UIAlertController(title: RequestResponses.shared.passwordChanged, message: RequestResponses.shared.haveANiceDay, preferredStyle: .alert)
+    let alertPasswordFailed = UIAlertController(title: Errors.shared.wrongPassword, message: Errors.shared.tryAgain, preferredStyle: .alert)
     
     
     
@@ -22,7 +22,7 @@ class ProfileController: UIViewController {
     
     @IBAction func deleteUser(_ sender: Any) {
         Requests.shared.deleteUser(api_token:[Parameters.shared.api_token: UserDefaults.standard.string(forKey: Parameters.shared.api_token)!]).responseJSON { (response) in
-            if response.value! as! String == "Deleted"{
+            if response.value! as! String == RequestResponses.shared.deleted{
                 AlertHandler.shared.addActionAlert(alert: self.alertDelete, nc: self.navigationController!, goRoot: true)
             }
         }
@@ -41,7 +41,7 @@ class ProfileController: UIViewController {
             ]
             let request = Requests.shared.updatePassword(parameters: parameters)
             request.responseJSON { (response) in
-                if(response.value! as! String == "OK"){
+                if(response.value! as! String == RequestResponses.shared.ok){
                     AlertHandler.shared.addActionAlert(alert: self.alertPasswordChaged, nc: self.navigationController!, goRoot: false)
                     self.oldPassword.text! = ""
                     self.newPassword.text! = ""
@@ -70,7 +70,7 @@ class ProfileController: UIViewController {
                     self.user = try JSONDecoder().decode(User.self, from: data)
                     self.profileName.text = self.user?._username
                 }catch{
-                    print("Error decoding == \(error)")
+                    print(Errors.shared.failedRequest)
                 }
             }
     }
