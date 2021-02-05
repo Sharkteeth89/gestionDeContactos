@@ -11,7 +11,10 @@ import UIKit
 class ProfileController: UIViewController {
     
     var user : User?
-    let alert = UIAlertController(title: "Account Deleted", message: "Thanks for using us!", preferredStyle: .alert)
+    let alertDelete = UIAlertController(title: "Account Deleted", message: "Thanks for using us!", preferredStyle: .alert)
+    let alertPasswordChaged = UIAlertController(title: "Password changed!", message: "Have a nice day!", preferredStyle: .alert)
+    let alertPasswordFailed = UIAlertController(title: "Wrong current password introduced", message: "Try again!", preferredStyle: .alert)
+    
     
     
     @IBOutlet var oldPassword: UITextField!
@@ -20,10 +23,10 @@ class ProfileController: UIViewController {
     @IBAction func deleteUser(_ sender: Any) {
         Requests.shared.deleteUser(api_token:["api_token": UserDefaults.standard.string(forKey: "api_token")!]).responseJSON { (response) in
             if response.value! as! String == "Deleted"{
-                self.alert.addAction(UIAlertAction(title: "OK", style: .cancel){
+                self.alertDelete.addAction(UIAlertAction(title: "OK", style: .cancel){
                     UIAlertAction in self.navigationController?.popToRootViewController(animated: true)
                 })
-                self.present(self.alert, animated: true, completion: nil)
+                self.present(self.alertDelete, animated: true, completion: nil)
             }
         }
     }
@@ -32,10 +35,35 @@ class ProfileController: UIViewController {
     @IBAction func changePassword(_ sender: Any) {
         oldPassword.isHidden = false
         newPassword.isHidden = false
+        
+        if checkPassword(textFieldPass: oldPassword) && checkPassword(textFieldPass: newPassword) {
+            let parameters = [
+                "api_token" : UserDefaults.standard.string(forKey: "api_token")!,
+                "password" : oldPassword.text!,
+                "new_password" : newPassword.text!
+            ]
+            let request = Requests.shared.updatePassword(parameters: parameters)
+            request.responseJSON { (response) in
+                if(response.value! as! String == "OK"){
+                    self.alertPasswordChaged.addAction(UIAlertAction(title: "OK", style: .cancel){
+                        UIAlertAction in
+                            self.oldPassword.text! = ""
+                            self.newPassword.text! = ""
+                            self.oldPassword.isHidden = true
+                            self.newPassword.isHidden = true
+                    })
+                    self.present(self.alertPasswordChaged, animated: true, completion: nil)
+                }else{
+                    self.alertPasswordFailed.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(self.alertPasswordFailed, animated: true, completion: nil)
+                }
+            }
+        }
     }
     @IBOutlet weak var profileName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         oldPassword.isHidden = true
         newPassword.isHidden = true
     
