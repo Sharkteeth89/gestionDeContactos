@@ -9,7 +9,7 @@ class SignController: UIViewController {
     let alert = UIAlertController(title: "", message: "Log in now!", preferredStyle: .alert)
     
     @IBAction func createUser(_ sender: UIButton) {
-        if !emailTF.text!.isEmpty && !passwordTF.text!.isEmpty{
+        if checkEmail(textFieldEmail: emailTF) && checkPassword(textFieldPass: passwordTF) && checkPassword(textFieldPass: confirmPasswordTF){
             if passwordTF.text == confirmPasswordTF.text {
                 
                 let user = User.init(name: emailTF.text!, email: emailTF.text!, profilePic: emailTF.text!, username: emailTF.text!, surname: emailTF.text!, password: passwordTF.text!)
@@ -18,11 +18,12 @@ class SignController: UIViewController {
                 request.responseJSON { response in
                     if(response.value! as! String == "User registered"){
                         self.alert.message = "User registered"
-                        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel){
+                        self.alert.addAction(UIAlertAction(title: "Go to login", style: .cancel){
                             UIAlertAction in self.navigationController?.popToRootViewController(animated: true)
                         })
                     }else{
-                        self.alert.message = "Mail already exists"                        
+                        self.alert.message = "Mail already exists"
+                        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                     }
                     self.present(self.alert, animated: true, completion: nil)
                 }
@@ -32,7 +33,7 @@ class SignController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        
         
     }
     

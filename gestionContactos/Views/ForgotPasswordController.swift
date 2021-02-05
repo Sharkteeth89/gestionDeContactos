@@ -14,7 +14,7 @@ class ForgotPasswordController: UIViewController {
     let alert = UIAlertController(title: "Nope dude", message: "Your new password is: ", preferredStyle: .alert)
     
     @IBAction func recoverPassword(_ sender: Any) {
-        if !emailTF.text!.isEmpty {
+        if checkEmail(textFieldEmail: emailTF) {
             let parameters = [
                 "email" : emailTF.text!
             ]
@@ -29,6 +29,7 @@ class ForgotPasswordController: UIViewController {
                     })                    
                 }else{
                     self.alert.message = "Wrong email"
+                    self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 }
                 self.present(self.alert, animated: true, completion: nil)
             }
@@ -36,6 +37,7 @@ class ForgotPasswordController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.hideKeyboardWhenTappedAround()
+        
     }
 }

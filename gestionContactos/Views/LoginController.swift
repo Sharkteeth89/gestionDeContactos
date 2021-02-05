@@ -9,7 +9,7 @@ class LoginController: UIViewController {
     
     
     @IBAction func login(_ sender: UIButton) {
-        if !emailTV.text!.isEmpty && !passwordTV.text!.isEmpty{
+        if checkEmail(textFieldEmail: emailTV) && checkPassword(textFieldPass: passwordTV){
             let parameters = [
                 "username":emailTV.text!,
                 "password":passwordTV.text!

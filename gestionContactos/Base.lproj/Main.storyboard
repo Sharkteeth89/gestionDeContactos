@@ -440,7 +440,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HNX-Ad-KmE">
-                                <rect key="frame" x="25" y="466" width="364" height="55"/>
+                                <rect key="frame" x="25" y="416" width="364" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzV-At-ltf">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="55"/>
@@ -469,18 +469,41 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" red="0.062745098040000002" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changePassword:" destination="Tbu-qn-3Hv" eventType="touchUpInside" id="xgz-el-aFo"/>
+                                        </connections>
                                     </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="0ac-b3-pMf">
+                                <rect key="frame" x="20" y="531" width="374" height="103"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Introduce your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LrG-Wc-ooJ" userLabel="OldPass">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Introduce your new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WvS-Qz-ZQd" userLabel="NewPass">
+                                        <rect key="frame" x="0.0" y="69" width="374" height="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="iUg-We-CJ5" firstAttribute="trailing" secondItem="0ac-b3-pMf" secondAttribute="trailing" constant="20" id="Epk-sk-bSg"/>
                             <constraint firstItem="vZa-X7-sM2" firstAttribute="leading" secondItem="iUg-We-CJ5" secondAttribute="leading" constant="30" id="IqH-03-GEP"/>
+                            <constraint firstItem="0ac-b3-pMf" firstAttribute="top" secondItem="HNX-Ad-KmE" secondAttribute="bottom" constant="60" id="K0p-Ey-s87"/>
                             <constraint firstItem="vZa-X7-sM2" firstAttribute="top" secondItem="jyn-jh-yNu" secondAttribute="bottom" constant="50" id="O96-bd-Lq5"/>
                             <constraint firstItem="jyn-jh-yNu" firstAttribute="leading" secondItem="iUg-We-CJ5" secondAttribute="leading" constant="87" id="OPp-sj-rIz"/>
+                            <constraint firstItem="0ac-b3-pMf" firstAttribute="leading" secondItem="iUg-We-CJ5" secondAttribute="leading" constant="20" id="Vdf-0x-muQ"/>
                             <constraint firstItem="iUg-We-CJ5" firstAttribute="trailing" secondItem="HNX-Ad-KmE" secondAttribute="trailing" constant="25" id="Z2Y-vY-HVc"/>
                             <constraint firstItem="HNX-Ad-KmE" firstAttribute="leading" secondItem="iUg-We-CJ5" secondAttribute="leading" constant="25" id="brD-Me-dgY"/>
-                            <constraint firstItem="HNX-Ad-KmE" firstAttribute="top" secondItem="vZa-X7-sM2" secondAttribute="bottom" constant="150" id="hhL-Su-MHm"/>
+                            <constraint firstItem="HNX-Ad-KmE" firstAttribute="top" secondItem="vZa-X7-sM2" secondAttribute="bottom" constant="100" id="hhL-Su-MHm"/>
                             <constraint firstItem="iUg-We-CJ5" firstAttribute="trailing" secondItem="jyn-jh-yNu" secondAttribute="trailing" constant="87" id="hq9-do-U48"/>
                             <constraint firstItem="iUg-We-CJ5" firstAttribute="trailing" secondItem="vZa-X7-sM2" secondAttribute="trailing" constant="30" id="omu-e6-foX"/>
                             <constraint firstItem="jyn-jh-yNu" firstAttribute="top" secondItem="iUg-We-CJ5" secondAttribute="top" constant="35" id="rSl-Fg-hgd"/>
@@ -489,6 +512,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.circle.fill" catalog="system" selectedImage="person.crop.circle.fill" id="g2r-qC-wbu"/>
                     <connections>
+                        <outlet property="newPassword" destination="WvS-Qz-ZQd" id="xo2-k0-dEj"/>
+                        <outlet property="oldPassword" destination="LrG-Wc-ooJ" id="zsj-QC-ZBk"/>
                         <outlet property="profileName" destination="Sa3-tW-nuS" id="VdK-7T-Ho4"/>
                     </connections>
                 </viewController>

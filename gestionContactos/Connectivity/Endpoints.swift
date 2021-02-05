@@ -16,7 +16,7 @@ class Endpoints {
         static let register:String = "/register"
         static let login:String = "/login"
         static let restorePassword:String = "/restore/password"
-        static let updatePassword:String = "/updatePassword"
+        static let updatePassword:String = "/update/password"
         static let delete:String = "/remove"
         static let getProfile:String = "/profile/info"
         static let getUsers:String = "/all"

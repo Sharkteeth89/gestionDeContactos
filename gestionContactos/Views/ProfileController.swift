@@ -13,6 +13,10 @@ class ProfileController: UIViewController {
     var user : User?
     let alert = UIAlertController(title: "Account Deleted", message: "Thanks for using us!", preferredStyle: .alert)
     
+    
+    @IBOutlet var oldPassword: UITextField!
+    @IBOutlet var newPassword: UITextField!
+    
     @IBAction func deleteUser(_ sender: Any) {
         Requests.shared.deleteUser(api_token:["api_token": UserDefaults.standard.string(forKey: "api_token")!]).responseJSON { (response) in
             if response.value! as! String == "Deleted"{
@@ -23,10 +27,17 @@ class ProfileController: UIViewController {
             }
         }
     }
+    
+    
+    @IBAction func changePassword(_ sender: Any) {
+        oldPassword.isHidden = false
+        newPassword.isHidden = false
+    }
     @IBOutlet weak var profileName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        oldPassword.isHidden = true
+        newPassword.isHidden = true
     
         let request = Requests.shared.getProfileInfo(api_token: ["api_token": UserDefaults.standard.string(forKey: "api_token")!])
         
