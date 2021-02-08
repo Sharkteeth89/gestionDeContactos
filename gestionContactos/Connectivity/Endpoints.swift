@@ -8,7 +8,7 @@ class Endpoints {
     
     let url_clase = "http://localhost:8888/Laravel/api-cryptonite/public/api/users"
     let url = "https://superapi.netlify.app"
-    let url_server = "http://79.159.179.214/api/users"
+    let url_server = "http://IP/api/users"
     
     //User´s Petitions
     enum User {
